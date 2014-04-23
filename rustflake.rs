@@ -21,7 +21,7 @@ impl Rustflake
 		let ut64:u64 = ((ut.sec as u64) * std::num::pow(10u64,9)) +
 			(ut.nsec as u64);// -
 		//	1396646093292870342u64; // 2014-Apr-04 17:15 EST
-		if (self.last_gen > ut64)
+		if self.last_gen > ut64
 		{
 			// May not be the best way to deal with this
 			std::io::timer::sleep(self.last_gen - ut64);
@@ -43,9 +43,9 @@ impl Rustflake
 		let utu = ut64 / 1000;
 
 		self.counter = (self.counter + 1) % 4096;
-		if (self.counter == 0)
+		if self.counter == 0
 		{
-			if (self.last_rollover == utu)
+			if self.last_rollover == utu
 			{
 				// May not be the best way to deal with this
 				std::io::timer::sleep(1);
@@ -53,12 +53,12 @@ impl Rustflake
 			};
 			self.last_rollover = utu;
 		}
-		return sfid;
+		sfid
 	}
 
 	fn new(host_id: u16) -> Rustflake
 	{
-		if ( host_id >= 1024 ) { fail!("Host must be < 1024"); }
+		if  host_id >= 1024  { fail!("Host must be < 1024"); }
 		return Rustflake
 		{
 			counter: 0,
@@ -74,7 +74,7 @@ impl Rustflake
 fn main()
 {
 	let mut s = Rustflake::new(0);
-	for i in range(0, 20)
+	for _ in range(0, 20)
 	{
 		print!("ID: {}\n", s.gen());
 	}

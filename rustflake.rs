@@ -1,6 +1,6 @@
 extern crate time;
  
-struct Snowflake
+struct Rustflake
 {
 	counter: u16,
 	host_id: u16,
@@ -8,7 +8,7 @@ struct Snowflake
 	last_gen: u64,
 }
 
-impl Snowflake
+impl Rustflake
 {
 	pub fn gen(&mut self) -> u64
 	{
@@ -56,10 +56,10 @@ impl Snowflake
 		return sfid;
 	}
 
-	fn new(host_id: u16) -> Snowflake
+	fn new(host_id: u16) -> Rustflake
 	{
 		if ( host_id >= 1024 ) { fail!("Host must be < 1024"); }
-		return Snowflake
+		return Rustflake
 		{
 			counter: 0,
 			host_id: host_id,
@@ -73,7 +73,7 @@ impl Snowflake
 
 fn main()
 {
-	let mut s = Snowflake::new(0);
+	let mut s = Rustflake::new(0);
 	for i in range(0, 20)
 	{
 		print!("ID: {}\n", s.gen());

@@ -1,4 +1,5 @@
 extern crate time;
+use std::time::Duration;
  
 struct Rustflake
 {
@@ -24,7 +25,7 @@ impl Rustflake
 		if self.last_gen > ut64
 		{
 			// May not be the best way to deal with this
-			std::io::timer::sleep(self.last_gen - ut64);
+			std::io::timer::sleep(Duration::seconds((self.last_gen - ut64) as i64));
 			return self.gen();
 		}
 		self.last_gen = ut64;
@@ -48,7 +49,7 @@ impl Rustflake
 			if self.last_rollover == utu
 			{
 				// May not be the best way to deal with this
-				std::io::timer::sleep(1);
+				std::io::timer::sleep(Duration::seconds(1));
 				return self.gen();
 			};
 			self.last_rollover = utu;

@@ -75,7 +75,7 @@ impl Rustflake
 fn main()
 {
 	let mut s = Rustflake::new(0);
-	for _ in range(0, 20)
+	for _ in range(0, 20u)
 	{
 		print!("ID: {}\n", s.gen());
 	}

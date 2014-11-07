@@ -59,7 +59,7 @@ impl Rustflake
 
 	fn new(host_id: u16) -> Rustflake
 	{
-		if  host_id >= 1024  { fail!("Host must be < 1024"); }
+		if  host_id >= 1024  { panic!("Host must be < 1024"); }
 		return Rustflake
 		{
 			counter: 0,

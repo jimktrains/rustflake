@@ -1,4 +1,4 @@
-rustflake
+grustflake
 =========
 
 A Rust implementation of [Twitter's Snowflake](https://github.com/twitter/snowflake/).
@@ -10,8 +10,7 @@ One difference between rustflake and snowflake is that snowflake has a modified 
 
 Layout:
 
-|  Size  |             |
-| (bits) | Description |
+|  Size  | Description |
 | ------ | ----------- |
 | 41     | ms Timestamp|
 | 10     | machine id  |
